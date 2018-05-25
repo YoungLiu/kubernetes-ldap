@@ -1,0 +1,21 @@
+# clusters refers to the remote service.
+clusters:
+  - name: bjo-kubernetes-ldap-webhook-server
+    cluster:
+      certificate-authority: /opt/kubernetes/pki/ca.pem         # CA for verifying the remote service.
+      server: https://bjo-devops-001.dev.fwmrm.net:4000/authenticate # URL of remote service to query. Must use 'https'.
+
+# users refers to the API server's webhook configuration.
+users:
+  - name: apiserver-webhook-user
+    user:
+      client-certificate: /opt/kubernetes/pki/apiserver.pem # cert for the webhook plugin to use
+      client-key: /opt/kubernetes/pki/apiserver-key.pem          # key matching the cert
+
+# kubeconfig files require a context. Provide one for the API server.
+current-context: webhook
+contexts:
+- context:
+    cluster: bjo-kubernetes-ldap-webhook-server
+    user: apiserver-webhook-user
+  name: webhook

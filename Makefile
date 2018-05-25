@@ -6,7 +6,8 @@ GOARCH=$(shell go env GOARCH)
 REPOPATH = kismatic/kubernetes-ldap
 
 build: vendor
-	go build -o bin/kubernetes-ldap -ldflags "-X $(REPOPATH).Version=$(VERSION)" ./cmd/kubernetes-ldap.go
+	GOOS=linux GOARCH=amd64 go build -o bin/kubernetes-ldap -ldflags "-X $(REPOPATH).Version=$(VERSION)" ./cmd/kubernetes-ldap.go
+#	go build -o bin/kubernetes-ldap -ldflags "-X $(REPOPATH).Version=$(VERSION)" ./cmd/kubernetes-ldap.go
 
 test: bin/glide
 	go test $(shell ./bin/glide novendor)
@@ -21,7 +22,7 @@ run:
 	./bin/kubernetes-ldap
 
 vendor: bin/glide
-	./bin/glide install
+	./bin/glide install -v
 
 bin/glide:
 	@echo "Downloading glide"

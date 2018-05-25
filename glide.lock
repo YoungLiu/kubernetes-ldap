@@ -1,6 +1,12 @@
 hash: 30f59612d50812334a3f8a25d7a79719d112a1d1bdd107c3ce10ff86a2423382
-updated: 2016-06-13T14:53:25.3962853-04:00
+updated: 2018-05-25T18:05:20.904679011+08:00
 imports:
+- name: github.com/apprenda-kismatic/kubernetes-ldap
+  version: 2b3a616d617c24856a32ed7105281809a6e74753
+  subpackages:
+  - auth
+  - ldap
+  - token
 - name: github.com/go-ldap/ldap
   version: 0e7db8eb77695b5a952f0e5d78df9ab160050c73
   subpackages:
@@ -17,12 +23,8 @@ imports:
   version: d2a847139a1442cada879cc05cc4080485b8d193
   subpackages:
   - cipher
-  - json
   - github.com\square\go-jose
-  - github.com\square\go-jose\cipher
-  - github.com\square\go-jose\json
+  - json
 - name: gopkg.in/asn1-ber.v1
   version: 9eae18c3681ae3d3c677ac2b80a8fe57de45fc09
-  subpackages:
-  - gopkg.in\asn1-ber.v1
-devImports: []
+testImports: []
