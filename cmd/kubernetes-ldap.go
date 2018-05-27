@@ -90,6 +90,7 @@ func main() {
 	webhook := auth.NewTokenWebhook(tokenVerifier)
 
 	ldapTokenIssuer := &auth.LDAPTokenIssuer{
+		LDAPServer:		   *flLdapHost,
 		LDAPAuthenticator: ldapClient,
 		TokenSigner:       tokenSigner,
 	}

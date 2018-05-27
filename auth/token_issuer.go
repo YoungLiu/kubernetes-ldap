@@ -33,7 +33,8 @@ func (lti *LDAPTokenIssuer) ServeHTTP(resp http.ResponseWriter, req *http.Reques
 		return
 	}
 
-	fmt
+	//glog.Errorf("%s", ldapEntry.GetAttributeValue("cn"))
+	//glog.Errorf("%s", ldapEntry.GetAttributeValue("department"))
 
 	// Auth was successful, create token
 	token := lti.createToken(ldapEntry)
@@ -52,7 +53,8 @@ func (lti *LDAPTokenIssuer) ServeHTTP(resp http.ResponseWriter, req *http.Reques
 
 func (lti *LDAPTokenIssuer) createToken(ldapEntry *goldap.Entry) *token.AuthToken {
 	return &token.AuthToken{
-		Username: ldapEntry.DN,
+		Username: ldapEntry.GetAttributeValue("cn"),
+		Group: ldapEntry.GetAttributeValue("department"),
 		Assertions: map[string]string{
 			"ldapServer": lti.LDAPServer,
 			"userDN":     ldapEntry.DN,

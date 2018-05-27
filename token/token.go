@@ -22,6 +22,7 @@ var curveEll = elliptic.P256()
 // AuthToken contains information about the authenticated user
 type AuthToken struct {
 	Username   string
+	Group	   string
 	Assertions map[string]string
 }
 
