@@ -3,8 +3,8 @@ package auth
 import (
 	"net/http"
 
-	"github.com/apprenda-kismatic/kubernetes-ldap/ldap"
-	"github.com/apprenda-kismatic/kubernetes-ldap/token"
+	"github.com/YoungLiu/kubernetes-ldap/ldap"
+	"github.com/YoungLiu/kubernetes-ldap/token"
 	goldap "github.com/go-ldap/ldap"
 	"github.com/golang/glog"
 )
@@ -32,6 +32,8 @@ func (lti *LDAPTokenIssuer) ServeHTTP(resp http.ResponseWriter, req *http.Reques
 		resp.WriteHeader(http.StatusUnauthorized)
 		return
 	}
+
+	fmt
 
 	// Auth was successful, create token
 	token := lti.createToken(ldapEntry)

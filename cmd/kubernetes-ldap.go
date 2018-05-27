@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/apprenda-kismatic/kubernetes-ldap/auth"
-	"github.com/apprenda-kismatic/kubernetes-ldap/ldap"
-	"github.com/apprenda-kismatic/kubernetes-ldap/token"
+	"github.com/YoungLiu/kubernetes-ldap/auth"
+	"github.com/YoungLiu/kubernetes-ldap/ldap"
+	"github.com/YoungLiu/kubernetes-ldap/token"
 	"github.com/golang/glog"
 
 	goflag "flag"

@@ -6,7 +6,6 @@ import (
 	"fmt"
 
 	"github.com/go-ldap/ldap"
-	"github.com/constabulary/gb/testdata/src/c"
 )
 
 // Authenticator authenticates a user against an LDAP directory
@@ -77,6 +76,7 @@ func (c *Client) Authenticate(username, password string) (*ldap.Entry, error) {
 
 // Create a new TCP connection to the LDAP server
 func (c *Client) dial() (*ldap.Conn, error) {
+    fmt.Errorf("c.TLSConfig.InsecureSkipVerify: %v, c.AllowInsecure: %v \n", c.TLSConfig.InsecureSkipVerify, c.AllowInsecure)
 	address := fmt.Sprintf("%s:%d", c.LdapServer, c.LdapPort)
 
 	if !c.TLSConfig.InsecureSkipVerify {
